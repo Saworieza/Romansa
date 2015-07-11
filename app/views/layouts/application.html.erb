@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav>
+		<%= link_to 'Home', root_path %>
+		<%= link_to 'Timeline', posts_path %>
+		<% if user_signed_in? %>
+			<%= link_to current_user.username, edit_user_registration_path, class: "page-scroll " %>
+			<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "page-scroll fa fa-sign-out " %>
+		<% else %>
+				<%= link_to " Sign in", new_user_session_path, class: "page-scroll fa fa-sign-in" %>
+				<%= link_to " Sign Up", new_user_registration_path, class: "button page-scroll fa fa-user " %>	
+		<% end %>
+	</nav>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
 
 <%= yield %>
 

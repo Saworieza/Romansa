@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= form_for Post.new do |f| %>
+  <!--<%# if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <%# @post.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
+      </ul>
+    </div>
+  <%# end %>--> 
+
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Post' %>
+  </div>
+<% end %>
+
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.user.username %><br><%= time_ago_in_words(post.created_at) %></td>
+        <td><%= link_to (post.body),post %></td>
+        <!-- lock these down in a dropdonw like facebook -->
+        <% if user_signed_in? %>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
