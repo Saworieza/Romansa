@@ -7,19 +7,63 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav>
-		<%= link_to 'Home', root_path %>
-		<%= link_to 'Timeline', posts_path %>
-		<% if user_signed_in? %>
-			<%= link_to current_user.username, edit_user_registration_path, class: "page-scroll " %>
-			<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "page-scroll fa fa-sign-out " %>
-		<% else %>
-				<%= link_to " Sign in", new_user_session_path, class: "page-scroll fa fa-sign-in" %>
-				<%= link_to " Sign Up", new_user_registration_path, class: "button page-scroll fa fa-user " %>	
-		<% end %>
+	<nav class="navbar navbar-default container" >
+	<!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand page-scroll logo" href="#page-top">
+                    <img src="img/sumuni.png">
+                </a>-->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav ">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>	
+						<%= link_to 'Home', root_path %>
+					</li>
+					<li>
+						<%= link_to 'Timeline', posts_path %>
+					</li>
+					<li>
+						<%= link_to 'Members', users_index_path %>
+					</li>
+					<% if user_signed_in? %>
+						<li>
+							<%= link_to current_user.username, edit_user_registration_path, class: "page-scroll fa fa-user " %>
+						</li>
+						<li>
+							<%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+						</li>
+						<li>
+							<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "page-scroll fa fa-sign-out " %>
+						</li>
+					<% else %>
+						<li>
+							<%= link_to " Sign in", new_user_session_path, class: "page-scroll fa fa-sign-in" %>
+						</li>
+						<li>
+							<%= link_to " Sign Up", new_user_registration_path, class: "button page-scroll fa fa-user " %>
+						</li>	
+					<% end %>
+				</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
 	</nav>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="container">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+	</div>
 
 <%= yield %>
 

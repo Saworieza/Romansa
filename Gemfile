@@ -12,6 +12,7 @@ gem 'cancancan', '~> 1.10'
 gem 'rolify'
 #multiple step sign up form
 gem 'wicked'
+gem 'public_activity'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

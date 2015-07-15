@@ -1,52 +1,53 @@
-<p id="notice"><%= notice %></p>
+ <div class="container"> 
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+  <h1>Listing Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <%= form_for Post.new do |f| %>
-  <!--<%# if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <%# @post.errors.full_messages.each do |message| %>
-        <li><%#= message %></li>
-      <%# end %>
-      </ul>
-    </div>
-  <%# end %>--> 
-
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Post' %>
-  </div>
-<% end %>
-
-    <% @posts.each do |post| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= post.user.username %><br><%= time_ago_in_words(post.created_at) %></td>
-        <td><%= link_to (post.body),post %></td>
-        <!-- lock these down in a dropdonw like facebook -->
-        <% if user_signed_in? %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th>User</th>
+        <th>Body</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.user.username %><br></td>
+          <td><%= link_to (post.body), post %>
+            <% if post.user == current_user %>
+              <p>
+              | <%= link_to 'Edit', edit_post_path(post) %> |
+              <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure'} %>
+            <% end %>
+          </td>
+
+          <td><%= link_to 'Like', upvote_post_path(post), method: :post %> |</td>
+          <td> <%= time_ago_in_words(post.created_at) %></td>
+          <td><%= pluralize(post.votes.count, "Like") %></td>
+          <td><%= pluralize(post.comments.count, "Comment") %></td>
 
 
+            <td><%= render post.comments %></td>
+            <td>
+              <%= form_for [post, Comment.new] do |f| %>
+                <p>
+                  <%= f.label :comment, "New comment" %><br/>
+                  <%= f.text_area :comment %>
+                </p>
+                <p><%= f.submit "Add comment" %></p>
+            </td>
+
+          <% end %>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <br>
+
+  <%= link_to 'New Post', new_post_path %>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>Members</h1>
+	<table>
+		<thead>
+			<th></th>
+			<th>Name</th>
+			<th> Sex</th>
+			<th>Email</th>
+			<th>Looking For</th>
+		</thead>
+		<tbody>
+		<% @users.each do |user| %>
+			<tr>
+		        <td><%= image_tag user.avatar.url(:medium) %></td>
+		        <td><%= user.fullname %></td><!-- though i think its better to use the username to maintain anonmity-->
+		        <td><%= user.sex %></td>
+		        <td><%= user.email %></td>
+		        <td><%= user.lookingfor %></td>
+		        <!--<td><%#=truncate(strip_tags(user.bio), length: 140) %></td>-->
+		    </tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>

@@ -12,8 +12,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:avatar, :fullname, :sex, :lookingfor, :dateofbirth, :status, :city, :country, :bio, :username, :email, :password, :password_confirmation, :current_password) }
   end
 
+  before_filter :set_current_user
+
   #to fix the devise current signed in user issues
   def set_current_user
     Post.current_user = current_user
+  end
+
+  def track_activity(trackable, action = params[:action])
+      current_user.activities.create! action: action, trackable: trackable 
   end
 end
