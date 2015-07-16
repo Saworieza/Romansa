@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 		@comment.save
 		
 		if @comment.save
-			track_activity @comment
+			#track_activity @comment
 			redirect_to posts_path
 		else
 			render 'new'
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.find(params[:id])
 
 		if @comment.update(params[:comment].permit(:comment))
-			track_activity @comment 
+			#track_activity @comment 
 			redirect_to posts_path
 		else
 			render 'edit'

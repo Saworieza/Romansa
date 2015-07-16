@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include PublicActivity::StoreController
+  
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -18,8 +18,11 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Post.current_user = current_user
   end
+  hide_action :current_user
 
+=begin
   def track_activity(trackable, action = params[:action])
       current_user.activities.create! action: action, trackable: trackable 
   end
+=end
 end

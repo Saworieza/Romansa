@@ -15,6 +15,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.user.username %><br></td>
+          <td><%#= link_to (image_tag post.image.url), post%></td>
           <td><%= link_to (post.body), post %>
             <% if post.user == current_user %>
               <p>
