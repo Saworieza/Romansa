@@ -13,9 +13,26 @@ Rails.application.routes.draw do
        post 'upvote'
     end
   end
+  
+  resources :conversations do
+    resources :messages
+  end
+  
   devise_for :users
   resources :users
-  get 'home/index'
+=begin
+  authenticated :user do
+    root 'users#index'
+  end
+ 
+  unauthenticated :user do
+    devise_scope :user do
+      get "/" => "devise/sessions#new"
+    end
+  end
+=end
 
+
+  get 'home/index'
   root 'home#index'
 end
