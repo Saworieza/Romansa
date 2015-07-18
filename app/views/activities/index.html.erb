@@ -2,16 +2,19 @@
 	<h1>Activities</h1>
 	<% @activities.each do |activity| %>
 		<div class="activity">
+
 			<%= link_to activity.owner.username, activity.owner if activity.owner %>
-			added comment to <%#= activity.inspect %>   
+			 <%#= activity.inspect %>   
+			
 			<% if activity.trackable %>  
-			<% if activity.trackable.kind_of? Comment %>
-			  <%= link_to activity.trackable.comment, [activity.trackable.post, activity.trackable] %>  
-
-			<% else %>
-			  <%= link_to activity.trackable.body, activity.trackable %>  
-
-			<% end %>
+				<% if activity.trackable.kind_of? Comment %>
+					commented
+			  		<%= link_to activity.trackable.comment, [activity.trackable.post, activity.trackable] %>  
+				<% else %>
+					<!-- tracks posts-->
+					Created a new post. 
+			  		<%= link_to activity.trackable.body, activity.trackable %>  
+				<% end %>
 			<% else %>  
 			  which has since been removed   
 			<% end %> 

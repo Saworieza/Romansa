@@ -1,5 +1,4 @@
 var ready = function () {
-    alert("hello");
  
     /**
      * When the send message link on our home page is clicked

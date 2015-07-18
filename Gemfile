@@ -10,7 +10,8 @@ gem 'will_paginate-bootstrap'
 #user roles
 gem 'cancancan', '~> 1.10' 
 gem 'rolify'
-#multiple step sign up form
+
+gem 'mailboxer'
 gem 'wicked'
 gem 'public_activity'
 gem "private_pub"
