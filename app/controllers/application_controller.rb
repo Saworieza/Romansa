@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
-  helper_method :mailbox
+  helper_method :mailbox, :conversation #conversation?
   
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   def mailbox
     @mailbox ||= current_user.mailbox
   end
+
+  #i think it should be conversation as it's a helper method, same as up there and also when installing the mailboxer it has sth called conversation generated
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
   
   protected
 
