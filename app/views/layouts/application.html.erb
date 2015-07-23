@@ -42,6 +42,11 @@
 						<li>
 							<%= link_to 'Notifications', activities_path %>
 						</li>
+						<li>
+
+						<li>
+							<%= link_to "Inbox", mailbox_inbox_path %>
+						</li>
 						
 						<li>
 							<%= link_to current_user.username, edit_user_registration_path, class: "page-scroll fa fa-user " %>
@@ -66,12 +71,14 @@
         </div>
         <!-- /.container-fluid -->
 	</nav>
+	<% flash.each do |key, value| %>
+	    <div class="text-center <%= flash_class(key) %>">
+	      <%= value %>
+	    </div>
+	<% end %>
+
 	<div class="container">
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
+		<%= yield %>
 	</div>
-
-<%= yield %>
-
 </body>
 </html>

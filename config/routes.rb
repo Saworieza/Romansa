@@ -20,17 +20,11 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users
-=begin
-  authenticated :user do
-    root 'users#index'
-  end
- 
-  unauthenticated :user do
-    devise_scope :user do
-      get "/" => "devise/sessions#new"
-    end
-  end
-=end
+
+  # mailbox folder routes
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
 
   get 'home/index'

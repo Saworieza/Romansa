@@ -80,6 +80,7 @@
 	          <ul class="media-list">
 	            <% @conversations.each do |conversation| %>
 	                <li class="media">
+	                	<%#= image_tag user.avatar.url(:medium), class: "media-object pull-left" %>
 	                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
 	                  <div class="media-body">
 	                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>

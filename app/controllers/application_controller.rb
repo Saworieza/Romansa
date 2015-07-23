@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
+  helper_method :mailbox
   
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  private
+  def mailbox
+    @mailbox ||= current_user.mailbox
+  end
+  
   protected
 
   def configure_permitted_parameters
@@ -20,9 +26,5 @@ class ApplicationController < ActionController::Base
   end
   hide_action :current_user
 
-=begin
-  def track_activity(trackable, action = params[:action])
-      current_user.activities.create! action: action, trackable: trackable 
-  end
-=end
+
 end
