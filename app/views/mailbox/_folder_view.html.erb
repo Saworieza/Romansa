@@ -17,9 +17,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <% if is_convo %>
-            <%= render 'convos/form' %>
+          <%= render 'convos/form' %>
         <% else %>
-        <!-- TODO -->
+          <%= render partial: 'convos/conversation', collection: messages %>
         <% end %>
       </div>
     </div>
