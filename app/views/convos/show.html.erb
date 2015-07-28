@@ -29,7 +29,7 @@
       </div>
       <div class="panel-footer">
         <!-- Reply Form -->
-        <%= form_for :message, url: reply_conversation_path(convo) do |f| %>
+        <%= form_for :message, url: reply_convo_path(conversation) do |f| %>
             <div class="form-group">
               <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
             </div>
