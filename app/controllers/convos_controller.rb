@@ -5,9 +5,9 @@ class ConvosController < ApplicationController
  	end
  	def create
     	recipients = User.where(id: conversation_params[:recipients])
-    	conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).convo
+    	conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
     	flash[:success] = "Your message was successfully sent!"
-    	redirect_to convo_path(convo)
+    	redirect_to convo_path(conversation)
   	end
 
   	def show
