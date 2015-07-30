@@ -10,6 +10,8 @@ gem 'will_paginate-bootstrap'
 #user roles
 gem 'cancancan', '~> 1.10' 
 gem 'rolify'
+#track master so as to not have compatibility issues with compass and sass
+gem 'chosen-rails', git: 'git://github.com/qpowell/chosen-rails.git'
 
 gem 'mailboxer'
 gem 'wicked'
