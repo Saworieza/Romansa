@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804163050) do
+ActiveRecord::Schema.define(version: 20150723111222) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 20150804163050) do
 
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
-
-  create_table "friendships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"

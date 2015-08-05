@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
   has_many :conversations, :foreign_key => :sender_id
   has_many :messages
 
-  has_many :friendships
-  has_many :friends, :through => :friendships
+ #has_many :friendships
+  #has_many :friends, :through => :friendships
 
   acts_as_messageable
 

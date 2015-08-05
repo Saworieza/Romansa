@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :friendships
   resources :activities
   resources :posts
   get 'users/index'
