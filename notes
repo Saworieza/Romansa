@@ -1,0 +1,5 @@
+added comments to show path for post. started working on individual comment show path(not necessary if you ask me)
+
+to dos
+user a can delete user B's comment on user Bs post. fix that. delete only if on user As post'
+create friendships

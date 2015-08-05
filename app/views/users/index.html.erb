@@ -1,5 +1,14 @@
 <div class="container">
-	<div class="col-lg-8">
+	<div class="col-lg-5">
+		<h2>Your Friends</h2>
+		<ul>
+		  <%# for user in @user.friends %>
+		  <li><%#= h user.username %></li>
+		  <%# end %>  
+		</ul>
+	</div>
+
+	<div class="col-lg-4">
 		<h1>Members</h1>
 		<table>
 			<thead>
@@ -17,6 +26,7 @@
 			        <td><%= user.sex %></td>
 			        <td><%= user.email %></td>
 			        <td><%= user.lookingfor %></td>
+			        <td><%= link_to 'Add friend', friendships_path(:friend_id => user), :method => :post %></td>
 			        <!--<td><%#=truncate(strip_tags(user.bio), length: 140) %></td>-->
 			    </tr>
 			<% end %>
@@ -40,7 +50,7 @@
 
 	<div class="row">
 	  <!-- Not implemented on tutorial -->
-	  <div class="col-md-4">
+	  <div class="col-md-3">
 	    <div style="height: 300px; overflow-y: auto;">
 	      <div class="panel panel-default">
 	        <!-- Default panel contents -->
