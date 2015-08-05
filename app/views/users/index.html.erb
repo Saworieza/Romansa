@@ -1,14 +1,15 @@
 <div class="container">
-	<div class="col-lg-5">
+	<div class="col-lg-4">
 		<h2>Your Friends</h2>
 		<ul>
-		  <%# for user in @user.friends %>
-		  <li><%#= h user.username %></li>
-		  <%# end %>  
+		  <% for user in @user.friends %>
+		  <li><%= h user.username %></li>
+		  <% end %>  
 		</ul>
 	</div>
 
-	<div class="col-lg-4">
+	<div class="col-lg-5">
+		<!-- write a loop to randomly select six members who are not friends with user-->
 		<h1>Members</h1>
 		<table>
 			<thead>

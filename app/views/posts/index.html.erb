@@ -4,7 +4,7 @@
   <%= form_for [Post.new] do |f| %>
   <p>
     <%= f.label :body, "New Post" %><br/>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, placeholder: 'Whats on your mind', class: 'col-lg-8' %>
   </p>
   <p><%= f.submit "Create Post" %></p>
   <% end %>
@@ -42,7 +42,7 @@
               <%= form_for [post, Comment.new] do |f| %>
                 <p>
                   <%= f.label :comment, "New comment" %><br/>
-                  <%= f.text_area :comment %>
+                  <%= f.text_area :comment, placeholder: 'Reply to post' %>
                 </p>
                 <p><%= f.submit "Add comment" %></p>
             </td>
