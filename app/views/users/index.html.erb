@@ -20,8 +20,8 @@
 			<tbody>
 			<% @users.each do |user| %>
 				<tr>
-			        <td><%= image_tag user.avatar.url(:medium) %></td>
-			        <td><%= user.fullname %></td><!-- though i think its better to use the username to maintain anonmity-->
+			        <td><%= link_to (image_tag user.avatar.url(:medium)), user %></td>
+			        <td><%= link_to (user.fullname), user %></td><!-- though i think its better to use the username to maintain anonmity-->
 			        <td><%= user.sex %></td>
 			        <td><%= user.email %></td>
 			        <td><%= user.lookingfor %></td>

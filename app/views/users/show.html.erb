@@ -2,3 +2,19 @@
 	<h1>Users#show</h1>
 	<p>Find me in app/views/users/show.html.erb</p>
 </div>
+<div>
+	<p>
+	  <strong>Email:</strong>
+	  <%#= @user.email %>
+	</p>
+	<p>
+	  <strong>Email:</strong>
+	  <%#= @user.email %>
+	</p>
+	
+	
+	<%= image_tag @user.avatar.url(:medium) %>
+	<%= @user.username %>
+	<%= @user.sex %></td>
+	<%= @user.lookingfor %>
+	<%= link_to 'Add friend' %>
